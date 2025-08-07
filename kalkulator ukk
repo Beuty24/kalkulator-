@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Gelap</title>
+  <style>
+    body {
+      background: #121212;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .kalkulator {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #000;
+      width: 240px;
+    }
+
+    #layar {
+      width: 100%;
+      height: 50px;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      text-align: right;
+      background: #2c2c2c;
+      color: #fff;
+      border: none;
+      padding: 10px;
+    }
+
+    .tombol {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      background: #333;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    .operator {
+      background: #ff9500;
+      color: #000;
+    }
+
+    .clear {
+      background: #ff3b30;
+      color: #000;
+    }
+
+    .equal {
+      background: #34c759;
+      color: #000;
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="kalkulator">
+    <input type="text" id="layar" disabled>
+    <div class="tombol">
+      <button onclick="hapus()" class="clear">C</button>
+      <button onclick="tambahLayar('(')">(</button>
+      <button onclick="tambahLayar(')')">)</button>
+      <button onclick="tambahLayar('/')" class="operator">÷</button>
+
+      <button onclick="tambahLayar('7')">7</button>
+      <button onclick="tambahLayar('8')">8</button>
+      <button onclick="tambahLayar('9')">9</button>
+      <button onclick="tambahLayar('*')" class="operator">×</button>
+
+      <button onclick="tambahLayar('4')">4</button>
+      <button onclick="tambahLayar('5')">5</button>
+      <button onclick="tambahLayar('6')">6</button>
+      <button onclick="tambahLayar('-')" class="operator">−</button>
+
+      <button onclick="tambahLayar('1')">1</button>
+      <button onclick="tambahLayar('2')">2</button>
+      <button onclick="tambahLayar('3')">3</button>
+      <button onclick="tambahLayar('+')" class="operator">+</button>
+
+      <button onclick="tambahLayar('0')">0</button>
+      <button onclick="tambahLayar('.')">.</button>
+      <button onclick="hitung()" class="equal">=</button>
+    </div>
+  </div>
+
+  <script>
+    const layar = document.getElementById("layar");
+
+    function tambahLayar(nilai) {
+      layar.value += nilai;
+    }
+
+    function hapus() {
+      layar.value = "";
+    }
+
+    function hitung() {
+      try {
+        layar.value = eval(layar.value);
+      } catch {
+        layar.value = "Error";
+      }
+    }
+  </script>
+</body>
+</html>
